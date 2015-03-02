@@ -84,25 +84,62 @@ main {
 	overflow: auto;
 }
 
-main .contents {
-	float: left;
-	width: 570px;
+main .content {
+	padding-bottom: 2em;
 }
 
-main .img-container {
-	float: right;
-	width: 285px;
-	text-align: center;
+main .content ul, main .content div {
+	padding: 1em;
+	background: #EEEEEE;
+	border-radius: 0 0.35em 0.35em 0.35em;
+}
+
+main .content ul li {
+	padding: 0.15em;
+	background: #F0FFFF;
+	border-radius: 0.35em;
+	font-size: 1em;
+	margin: 0.5em 0em;
+}
+
+main .content div button {
+	border-radius: 0.3em;
+	background: #E6E6E6;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 0.3em 1em 0.5em 1em;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+main .content div button:hover {
+	background: #CCCCCC;
+	text-decoration: none;
+}
+
+main .content input {
+	border-radius: 0.3em;
+	padding: 0.3em 1em 0.5em 1em;
+	font-size: 1em;
+	width: 45em;
+}
+
+main .tabs {
+	padding-top: 2em;
+}
+
+.tabs a {
+	color: #A52A2A;
 }
 
 .tabs a span {
 	display: inline-block;
-	border-radius: 5px 5px 0 0;
-	width: 100px;
-	margin-right: 10px;
+	border-radius: 0.35em 0.35em 0em 0em;
+	width: 6em;
+	margin-right: 0.35em;
 	text-align: center;
 	background: #ddd;
-	padding: 5px;
+	padding: 0.3em;
 }
 
 .tabs a span.active {
