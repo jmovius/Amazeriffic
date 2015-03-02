@@ -18,7 +18,7 @@ var main = function () {
 		return false;
 	});
 
-	$(".tabs a:nth-child(3)".on("click", function () {
+	$(".tabs a:nth-child(3)").on("click", function () {
 		makeTabActive(3);
 		return false;
 	});
