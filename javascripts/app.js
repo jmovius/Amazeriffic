@@ -1,6 +1,6 @@
 var main = function () {
 	"use strict";
-
+createSlideshow();
 	var toDos = [
 		"Finish writting this book",
 		"take Gracie to the park",
@@ -32,20 +32,27 @@ var main = function () {
 					$content.append($("<li>").text(todo));
 				});
 			} else if ($element.parent().is(":nth-child(3)")) {
-                $input = $("<input>");
-                $button = $("<button>").text("+");
+				$input = $("<input>");
+				$button = $("<button>").text("+");
 
-                $button.on("click", function () {
-                    if ($input.val() !== "") {
-                        toDos.push($input.val());
-                        $input.val("");
-                    }
-                });
+				$button.on("click", function () {
+					if ($input.val() !== "") {
+						toDos.push($input.val());
+						$input.val("");
+					}
+				});
 
-                $content = $("<div>").append($input, $button);
+				$content = $("<div>").append($input, $button);
+			} else if ($element.parent().is(":nth-child(4)")) {
+				$content = $("<div class='slideshow_gallery'>");
 			}
 
 			$("main .content").append($content);
+
+			// Must call createSlideshow() AFTER .slideshow_gallery has been written to the document.
+			if($element.parent().is(":nth-child(4)")) {
+				createSlideshow();
+			}
 
 			return false; // Return false to avoid following link.
 		});

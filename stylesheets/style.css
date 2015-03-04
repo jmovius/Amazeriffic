@@ -17,6 +17,7 @@ header .container, main .container, footer .container {
 a {
 	color: #DC143C;
 	text-decoration: none;
+	outline: none;
 }
 
 a:hover {
@@ -78,7 +79,7 @@ header nav {
 	text-align: center;
 }
 
-/* Main */
+/* Main Content */
 main {
 	background: white;
 	overflow: auto;
@@ -124,6 +125,7 @@ main .content input {
 	width: 45em;
 }
 
+/* Main Tabs */
 main .tabs {
 	padding-top: 2em;
 }
@@ -140,6 +142,10 @@ main .tabs {
 	text-align: center;
 	background: #ddd;
 	padding: 0.3em;
+}
+
+.tabs a:nth-child(4) span {
+	width: 10em;
 }
 
 .tabs a span.active {
