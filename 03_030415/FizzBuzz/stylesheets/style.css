@@ -1,0 +1,53 @@
+.fb_body {
+	font-family: courier, sans-serif;
+	font-size: 0.8em;
+}
+
+h1 {
+	font-weight: bold;
+}
+
+/* fizzbuzz_1 */
+.fb1_results p:nth-child(even) {
+	background: #C2C2D6;
+}
+
+.fb1_results p:nth-child(odd) {
+	background: #E0E0E0;
+}
+
+/* fizzbuzz_2 */
+.fb2_results p:nth-child(even) {
+	background: #C2D6D6;
+}
+
+.fb2_results p:nth-child(odd) {
+	background: #E0E0E0;
+}
+
+/* fizzbuzz_3 */
+.fb3_results p:nth-child(even) {
+	background: #ADC2D6;
+}
+
+.fb3_results p:nth-child(odd) {
+	background: #E0E0E0;
+}
+
+/* fizzbuzz_4 */
+.fb4_results p:nth-child(even) {
+	background: #D6D6C2;
+}
+
+.fb4_results p:nth-child(odd) {
+	background: #E0E0E0;
+}
+
+/* fizzbuzz_5 */
+.fb5_results p:nth-child(even) {
+	background: #C299AD;
+}
+
+.fb5_results p:nth-child(odd) {
+	background: #E0E0E0;
+}
