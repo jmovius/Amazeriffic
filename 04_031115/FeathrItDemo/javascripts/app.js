@@ -30,10 +30,10 @@ var main = function () {
 
 	$inputText.on('keyup', function(event) {
 		if(originalLen != $inputText.val().length) {
+			setCharLen($inputText.val().length);
 			$btn_revert.attr('disabled', true);
 			$btn_shorten.attr('disabled', false);	
 		}
-		setCharLen($inputText.val().length);
 	});
 
 	$btn_revert.on("click", function () {
