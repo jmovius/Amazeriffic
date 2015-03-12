@@ -64,7 +64,7 @@ var main = function () {
 		var obj = {divisibleByThree: "foo",divisibleByFive:"bar"};
 		if(!clicked) {
 			fizzbuzz_1();
-			fizzbuzz_2(100, 200);
+			fizzbuzz_2(200, 300);
 			fizzbuzz_3(arr);
 			fizzbuzz_4(obj);
 			fizzbuzz_5(arr, obj);

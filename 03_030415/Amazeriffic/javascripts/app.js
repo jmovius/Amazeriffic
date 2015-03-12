@@ -1,6 +1,7 @@
 var main = function () {
 	"use strict";
-createSlideshow();
+
+	createSlideshow();
 	var toDos = [
 		"Finish writting this book",
 		"take Gracie to the park",

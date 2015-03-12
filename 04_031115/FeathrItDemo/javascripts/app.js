@@ -17,11 +17,11 @@ var main = function () {
 		$btn_shorten = $("<button>").text("Shorten").attr('class', 'btn btn-default');
 
 	var setCharLen = function(len) {
-		if(len==0) {
+		if(len===0) {
 			$btn_shorten.attr('disabled', true);
 		}
 		$charLen.text(len + '/' + _maxLength);
-	}
+	};
 	setCharLen(0);
 
 	$inputText.on('keydown', function(event) {
