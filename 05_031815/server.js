@@ -7,37 +7,37 @@
  *  NOTE: The rules for "Rock/Paper/Scissors/Lizard/Spock" were pulled from the following website: http://www.samkass.com/theories/RPSSL.html
  */
 
+ /* jshint node: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, nonew: true, quotmark: double, strict: true, undef: true, unused: true */
+
 "use strict";
 
 var http = require("http"),
-    // querystring = require("querystring"),
-    // child_process = require("child_process"),
     response = {
         outcome: "",
-        serverPlay: "",
         wins: 0,
         losses: 0,
         ties: 0,
+        serverPlayed: ""
     },
     gameRules = [
         {
-            serverPlay: "rock",
+            serverPlays: "rock",
             playerLose: ["scissors", "lizard"]
         },
         {
-            serverPlay: "paper",
+            serverPlays: "paper",
             playerLose: ["rock", "spock"]
         },
         {
-            serverPlay: "scissors",
+            serverPlays: "scissors",
             playerLose: ["paper", "lizard"]
         },
         {
-            serverPlay: "lizard",
+            serverPlays: "lizard",
             playerLose: ["paper", "spock"]
         },
         {
-            serverPlay: "spock",
+            serverPlays: "spock",
             playerLose: ["rock", "scissors"]
         }
     ];
@@ -45,11 +45,11 @@ var http = require("http"),
 var serverAction = function (action) {
     var sPlay = gameRules[Math.floor(Math.random() * gameRules.length)];
 
-    response.serverPlay = sPlay.serverPlay;
+    response.serverPlayed = sPlay.serverPlays;
 
-    console.log("Server: " + sPlay.serverPlay);
+    console.log("Server: " + sPlay.serverPlays);
 
-    if (sPlay.serverPlay === action) {
+    if (sPlay.serverPlays === action) {
         response.outcome = "tie";
         ++response.ties;
     } else if(sPlay.playerLose.indexOf(action) > -1) {
@@ -67,11 +67,14 @@ var sendResponse = function (res) {
     res.end(JSON.stringify(response));
     console.log("Response sent to user.\n\n");
     response.outcome = "";
-    response.serverPlay = "";
+    response.serverPlayed = "";
 };
 
 var serverIdle = function (req, res) {
-    //console.log("req.url " + req.url);
+    if (req.method !== "POST") {
+        console.log("GET Received");
+        return;
+    }
 
     if (req.url === "/play/rock") {
         console.log("Player: rock");
@@ -82,7 +85,7 @@ var serverIdle = function (req, res) {
         serverAction("paper");
         sendResponse(res);
     } else if(req.url === "/play/scissors") {
-        console.log("Player: ccissors");
+        console.log("Player: scissors");
         serverAction("scissors");
         sendResponse(res);
     } else if(req.url === "/play/lizard") {
@@ -93,14 +96,12 @@ var serverIdle = function (req, res) {
         console.log("Player: spock");
         serverAction("spock");
         sendResponse(res);
-    } else if(req.url === "/favicon.ico") {
-        console.log("/favicon.ico request ignored.\n\n");
     } else {
         console.log("Invalid selection received.\n\n");
     }
 };
 
 var server = http.createServer(serverIdle);
-server.listen();
+server.listen(3000);
 var address = server.address();
 console.log("server is listening at http://localhost:" + address.port + "/");
