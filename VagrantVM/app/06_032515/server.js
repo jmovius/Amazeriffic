@@ -1,18 +1,18 @@
-#!/usr/bin/env node
-
-/*
- *  Author: John Movius
- *  Date: 03/18/15
- *
- *  NOTE: The rules for "Rock/Paper/Scissors/Lizard/Spock" were pulled from the following website: http://www.samkass.com/theories/RPSSL.html
- */
-
- /* jshint node: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, nonew: true, quotmark: double, strict: true, undef: true, unused: true */
+/* jshint node: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, nonew: true, quotmark: double, strict: true, undef: true, unused: true */
 
 "use strict";
 
-var http = require("http"),
-    response = {
+var express = require("express"),
+	http = require("http"),
+	app = express();
+
+// Set up directories.
+app.use(express.static(__dirname + "/views"));
+app.use("/javascript",  express.static(__dirname + "/javascript"));
+app.use("/style",  express.static(__dirname + "/style"));
+
+
+var response = {
         outcome: "",
         wins: 0,
         losses: 0,
@@ -61,68 +61,11 @@ var serverAction = function (action) {
     }
 };
 
-/*
-var sendResponse = function (res) {
-    console.log("-----\nOutcome: " + response.outcome + "\nWins: " + response.wins + "\nLosses: " + response.losses + "\nTies: " + response.ties + "\n-----");
-    res.writeHead(200, {"Content-Type": "application/json"});
-    res.end(JSON.stringify(response));
-    console.log("Response sent to user.\n\n");
-    response.outcome = "";
-    response.serverPlayed = "";
-};
-
-var serverIdle = function (req, res) {
-    if (req.method !== "POST") {
-        console.log("GET Received");
-        return;
-    }
-
-    if (req.url === "/play/rock") {
-        console.log("Player: rock");
-        serverAction("rock");
-        sendResponse(res);
-    } else if(req.url === "/play/paper") {
-        console.log("Player: paper");
-        serverAction("paper");
-        sendResponse(res);
-    } else if(req.url === "/play/scissors") {
-        console.log("Player: scissors");
-        serverAction("scissors");
-        sendResponse(res);
-    } else if(req.url === "/play/lizard") {
-        console.log("Player: lizard");
-        serverAction("lizard");
-        sendResponse(res);
-    } else if(req.url === "/play/spock") {
-        console.log("Player: spock");
-        serverAction("spock");
-        sendResponse(res);
-    } else {
-        console.log("Invalid selection received.\n\n");
-    }
-};
-
-var server = http.createServer(serverIdle);
-server.listen(3000);
-var address = server.address();
-console.log("server is listening at http://localhost:" + address.port + "/");
-*/
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-var express = require('express');
-var app = express();
-var router = express.Router();
-
-app.use('/play/:action', function (req, res, next) {
-  console.log('Request Type:', req.method);
-  next();
+// Set up routes.
+app.get("/play/:action", function (req, res) {
+	serverAction(req.params.action);
+	res.json(response);
 });
 
-// handler for /user/:id which renders a special page
-router.get('/play/:action', function (req, res) {
-    res.json(serverAction(action));
-});
-
-// mount the router on the app
-app.use('/', router);
+// Start server.
+http.createServer(app).listen(3000);
