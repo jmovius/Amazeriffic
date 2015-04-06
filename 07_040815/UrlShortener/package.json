@@ -1,0 +1,9 @@
+{
+  "name": "crackerjack",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "redis": "latest"
+  }
+}
