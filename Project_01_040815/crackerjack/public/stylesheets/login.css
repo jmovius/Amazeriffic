@@ -1,0 +1,39 @@
+header {
+ 	width: 100%;
+ 	font-family: 'Bangers', sans-serif;
+ 
+}
+
+body {
+	background: linear-gradient(#66cccc, #FFFFFF);
+}
+
+h2 {
+	font-family: 'Slabo 27px', sans-serif;
+	font-size: 1.5em;
+}
+
+main .login {
+	float: right;
+	width: auto;
+	padding-right: 300px;
+	padding-top: 150px;
+}
+
+.login-label {
+	font-family: 'Bangers', sans-serif;
+}
+
+main .description {
+	float: left;
+	font-family: 'Bangers', sans-serif;
+	padding: 100px;
+	width: 50%
+}
+
+main .alert {
+	text-align: left;
+	font-size: 0.75em;
+	font-weight: bold;
+	color: red;
+}
