@@ -35,7 +35,6 @@ var main = function () {
 	});
 
 	$(".input-text").keyup(function (e) {
-		//document.getElementById("message").innerHTML = "";
     	if (e.keyCode === 13) {
     		submitUrl();
     	}

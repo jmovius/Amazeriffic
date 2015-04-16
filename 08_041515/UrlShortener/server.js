@@ -62,21 +62,6 @@ var saveCallback = function (err, val) {
     }
 };
 
-/*
-urls.remove({}, function (err) { 
-   console.log("URLs Removed.");
-});
-key.remove({}, function (err) { 
-   console.log("Key Removed.");
-});
-urls.find({}, function (err, val) { 
-   console.log("URLs: " + val);
-});
-key.find({}, function (err, val) { 
-   console.log("Key: " + val);
-});
-//*/
-
 key.findOne({ id:"next" }, function (err, val) {
     if(val === null) {
         var INIT_KEY = new key({
@@ -109,7 +94,6 @@ var getKey = function (fn) {
 
 ////// Set up routes //////
 app.get("/", function (req, res) {
-//    rdb.flushall(); // Uncomment to erase all data in all redis databases.
     if(req.query.hits === "true") {
         // console.log("SERVER - /hits");
         urlHits.find().sort({ hits:-1 }).limit(10).exec(function (err, hits) {
@@ -153,8 +137,6 @@ app.post("/", function (req, res) {
                     hits: 0
                 });
                 tmpHit.save(saveCallback);
-
-//                rdb.zadd("hits", 0, shortUrl); // A
         
                 res.json({ msg:"Shortened URL: ", url:shortUrl });
             });
@@ -162,10 +144,6 @@ app.post("/", function (req, res) {
             res.json({ msg:"Related URL: ", url:val.url });
         }
     });
-
-    //rdb.keys("*", function(err, val) {
-    //    console.log("Keys: " + val);
-    //});
 
     //console.log("Parse: \n" + req.body.shortUrl);
 });
