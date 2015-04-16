@@ -59,7 +59,6 @@ router.get("/new/:username", function (req, res) {
 			res.send("user created successfully");
 		}
 	});
-	
 });
 
 router.get("/:username", function (req,res) {
