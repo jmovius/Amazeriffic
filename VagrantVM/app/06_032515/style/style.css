@@ -16,6 +16,13 @@ h1 {
 	height: 20em;
 }
 
+textarea.form-control {
+	/* Allow bootstrap textarea.form-control formatted elements to have a varying height based on container. */
+	height: 100%;
+	resize: none;
+	color:black;
+}
+
 .result-container {
 	width: 20em;
 	height: 11em;

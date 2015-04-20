@@ -22,14 +22,21 @@ var main = function () {
 		console.log("Input URL: " + inputUrl);
 
 			// Server API call
-		$.getJSON(inputUrl, function (response) {
-			tmpStr = "Server Played: " + response.serverPlayed +
-					"\nYou " + response.outcome +
-					"!\n\nServer Stats:" +
-					"\nPlayer Wins: " + response.wins +
-					"\nPlayer Losses: " + response.losses +
-					"\nPlayer Ties: " + response.ties;
-			$resultText.val(tmpStr);
+		$.ajax({
+  			type: "GET",
+  			url: inputUrl,
+  			success: function(response) {
+				tmpStr = "Server Played: " + response.serverPlayed +
+						"\nYou " + response.outcome +
+						"!\n\nServer Stats:" +
+						"\nPlayer Wins: " + response.wins +
+						"\nPlayer Losses: " + response.losses +
+						"\nPlayer Ties: " + response.ties;
+				$resultText.val(tmpStr);
+  			},
+  			error: function() {
+    			$resultText.val("Unable to acquire statistics.");
+  			}
 		});
 	});
 
