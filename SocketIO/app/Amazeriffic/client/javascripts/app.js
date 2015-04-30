@@ -119,48 +119,32 @@ var main = function (toDoObjects) {
         } else if ($active.parent().is(":nth-child(2)")) { // Oldest
             $("main .content ul").append($("<li>").text(newToDo.description));
         } else if ($active.parent().is(":nth-child(3)")) { // Tags
-            var tags = [];
 
-            // Get a list of all unique tags.
-            toDoObjects.forEach(function (toDo) {
-                toDo.tags.forEach(function (tag) {
-                    if (tags.indexOf(tag) === -1) {
-                        tags.push(tag);
-                    }
-                });
-            });
-
-            // Create JSON object that lists all ToDos under it's specified tag.
-            var tagObjects = tags.map(function (tag) {
-                var toDosWithTag = [];
-
-                toDoObjects.forEach(function (toDo) {
-                    if (toDo.tags.indexOf(tag) !== -1) {
-                        toDosWithTag.push(toDo.description);
-                    }
-                });
-
-                return { "name": tag, "toDos": toDosWithTag };
-            });
-
-            var initialTags = $(".content h3").toArray().map(function (tag){
+            // List of all tags that have already been initilalized.
+            var initialTags = $(".content h3").toArray().map(function (tag) {
                 return $(tag).text();
             });
 
-            // For each tag object, list each ToDo under the tag.
-            tagObjects.forEach(function (tag) {
+            // For each tag this ToDo contains.
+            newToDo.tags.forEach(function (tag) {
 
-                if (initialTags.indexOf(tag.name) === -1) { // Tag does not currently exist.
-                    var $tagName = $("<h3>").text(tag.name),
+                var tagIndex = initialTags.indexOf(tag);
+    
+                alert("newToDo.tags: " + newToDo.tags + "; tagIndex: " + tagIndex + ";");
+    
+                if (tagIndex === -1) { // Tag does not currently exist.
+                    //alert("tag.name: " + tag.name + "; tag.toDo: " + tag.toDos + ";");
+                    var $tagName = $("<h3>").text(newToDo.tags),
                         $content = $("<ul>"),
-                        $li = $("<li>").text(tag.toDo);
+                        $li = $("<li>").text(newToDo.description);
                     
                     $content.append($li);
-
+    
                     $("main .content").append($tagName);
                     $("main .content").append($content);
                 } else { // Tag exists, must add new ToDo to the existing tag unordered list.
-
+                    var $li = $("<li>").text(newToDo.description);
+                    $(".content h3:nth-of-type(" + (tagIndex + 1) + ")").next().append($li);
                 }
             });
         }
