@@ -112,7 +112,8 @@ var main = function (toDoObjects) {
         });
 
         var newToDo = toDoObjects[toDoObjects.length-1],
-            $active = $("span.active");
+            $active = $("span.active"),
+            $li, $tagName, $content;
 
         if ($active.parent().is(":nth-child(1)")) { // Newest
             $("main .content ul").prepend($("<li>").text(newToDo.description));
@@ -130,20 +131,17 @@ var main = function (toDoObjects) {
 
                 var tagIndex = initialTags.indexOf(tag);
     
-                alert("newToDo.tags: " + newToDo.tags + "; tagIndex: " + tagIndex + ";");
-    
                 if (tagIndex === -1) { // Tag does not currently exist.
-                    //alert("tag.name: " + tag.name + "; tag.toDo: " + tag.toDos + ";");
-                    var $tagName = $("<h3>").text(newToDo.tags),
-                        $content = $("<ul>"),
-                        $li = $("<li>").text(newToDo.description);
+                    $tagName = $("<h3>").text(newToDo.tags);
+                    $content = $("<ul>");
+                    $li = $("<li>").text(newToDo.description);
                     
                     $content.append($li);
     
                     $("main .content").append($tagName);
                     $("main .content").append($content);
                 } else { // Tag exists, must add new ToDo to the existing tag unordered list.
-                    var $li = $("<li>").text(newToDo.description);
+                    $li = $("<li>").text(newToDo.description);
                     $(".content h3:nth-of-type(" + (tagIndex + 1) + ")").next().append($li);
                 }
             });
@@ -155,7 +153,7 @@ var main = function (toDoObjects) {
         toDos = toDoObjects.map(function (toDo) {
             return toDo.description;
         });
-    })
+    });
 
     socket.on("ERROR", function (err) {
         console.log(err);
