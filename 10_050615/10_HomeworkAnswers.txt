@@ -1,0 +1,16 @@
+John Movius
+CPSC 473: Homework #10 — Answers to Questions
+
+Do you find the code to be simpler when using AngularJS? If so, how? If not, why?
+
+The code is much more simplistic with AngularJS. It’s easy to define objects within a specific scope and organize and display large sets of data within lists or arrays. Even if $scope is the only reason why AngularJS is used, it would still be worth it — it operates very much like a client-side session variable for a view, which allows the user to define and use variables both in the view and the underlying Angular code.
+
+
+Would a beginner to front-­end development find the code to be simpler? Why or why not?
+
+This would make manufacturing complex websites much simpler for a beginner because AngularJS allows the user to create objects and perform actions on those objects without having to understand any of the underlying implementation; however, understanding how to implement certain ideas would provide the user with a stronger sense of what they are actually doing when building their application.
+
+
+How might the structure provided by AngularJS simplify building larger web applications?
+
+AngularJS simplifies the construction of larger web applications because it encapsulates large ideas, and the complex code to implement said ideas, allowing users to write very complex applications with very few lines of code without understanding how it all works on the back-end.
