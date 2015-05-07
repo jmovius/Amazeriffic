@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-ng-app="commentApp">
+<html>
 	<head>
 		<title>A Simple App</title>
 
@@ -12,10 +12,10 @@
 			<p>A simple app that allows a user to input comments</p>
 		</header>
 
-		<main data-ng-controller="commentController">
+		<main data-ng-app="commentApp" data-ng-controller="commentController">
 			<section class="comment-input">
  				<p>Add Your Comment:</p>
-				<input id="inputComment" data-ng-model="comment"><button id="submitComment" data-ng-click="submitComment()">+</button>
+				<input id="inputComment" type="text" data-ng-model="comment"><button id="submitComment" data-ng-click="addCommentFromInputBox()">+</button>
 			</section>
 
 			<section class="comments">

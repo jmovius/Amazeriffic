@@ -5,7 +5,7 @@ var app = angular.module("commentApp", []),
 app.controller("commentController", function ($scope) {
 	$scope.comment = "";
     $scope.commentList = ["This is the first comment!", "Here's the second one!", "And this is one more.", "Here is another one!"];
-    $scope.submitComment = function () {
+    $scope.addCommentFromInputBox = function () {
     	if($scope.comment !== "") {
         	$scope.commentList.push($scope.comment);
         	$scope.comment = "";
