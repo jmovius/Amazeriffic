@@ -1,0 +1,72 @@
+{
+  "name": "spine",
+  "description": "MVC Library.",
+  "version": "1.5.0",
+  "author": {
+    "name": "maccman"
+  },
+  "keywords": [
+    "spine",
+    "coffeescript",
+    "MVC"
+  ],
+  "contributors": [
+    {
+      "name": "maccman"
+    },
+    {
+      "name": "aeischeid"
+    },
+    {
+      "name": "cengebretson"
+    },
+    {
+      "name": "adambiggs"
+    }
+  ],
+  "devDependencies": {
+    "coffee-script": ">=1.9.1"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/spine/spine/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/spine/spine.git"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "test": "set -e; for i in test/*.html; do phantomjs test/lib/run-jasmine.phantom.js file://`pwd`/$i; done"
+  },
+  "bugs": {
+    "url": "https://github.com/spine/spine/issues"
+  },
+  "homepage": "https://github.com/spine/spine",
+  "_id": "spine@1.5.0",
+  "dist": {
+    "shasum": "b9fb02f9b744fa5f00c804f3c76dfe112e34ec21",
+    "tarball": "http://registry.npmjs.org/spine/-/spine-1.5.0.tgz"
+  },
+  "_from": "spine@latest",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "aeischeid",
+    "email": "a.eischeid@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "maccman",
+      "email": "maccman@gmail.com"
+    },
+    {
+      "name": "aeischeid",
+      "email": "a.eischeid@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "b9fb02f9b744fa5f00c804f3c76dfe112e34ec21",
+  "_resolved": "https://registry.npmjs.org/spine/-/spine-1.5.0.tgz"
+}
