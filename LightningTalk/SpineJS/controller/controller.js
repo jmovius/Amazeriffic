@@ -33,7 +33,7 @@
 
     Comment.bind("create", function (cmt) {
         $inputComment.val("");
-        $commentsList.append(cmt.buildComment(Comment.count()+1));
+        $commentsList.append(cmt.buildComment(Comment.count()-1));
     });
     
     // Pull local data and load it to Comment.
@@ -93,7 +93,7 @@
     initComments();
 
     var hiddenController = new CommentController({
-        el: $("div"),
+        el: $("ul"),
         events: {
             "click": "click"
         },
