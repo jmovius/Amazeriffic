@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>A Simple App</title>
 
 		<link href="stylesheet/style.css" rel="stylesheet" type="text/css">
@@ -16,6 +17,7 @@
 			<section class="comment-input">
  				<p>Add Your Comment:</p>
 				<input id="inputComment" type="text"><button id="submitComment" class="submitComment">+</button>
+				<button id="deleteComments" class="deleteComments">Delete All Comments</button>
 			</section>
 
 			<section class="comments">
@@ -33,6 +35,7 @@
 		<script src="spine/lib/spine.js"></script>
 		<script src="spine/lib/local.js"></script>
 		<script src="spine/lib/route.js"></script>
+		<script src="model/model.js"></script>
 		<script src="controller/controller.js"></script>
 	</body>
 </html>

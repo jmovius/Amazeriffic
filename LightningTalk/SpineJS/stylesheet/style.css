@@ -85,7 +85,7 @@ main {
     background: gainsboro;
 }
 
-.hidden {
+.comments li.hidden {
 	background: black;
 }
 
